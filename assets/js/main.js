@@ -11,7 +11,7 @@ function convertPokemonToLi(pokemon) {
             <span class="number">#${pokemon.number}</span>
             <span class="name">${pokemon.name}</span>
 
-            <div class="detail">
+            <div id="${pokemon.number}" class="detail" onclick="redirectToDetailPage('${pokemon.number}')">
                 <ol class="types">
                     ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
                 </ol>
@@ -45,3 +45,8 @@ loadMoreButton.addEventListener('click', () => {
         loadPokemonItens(offset, limit)
     }
 })
+
+function redirectToDetailPage(pokemonId) {
+    // Redireciona para a página detail.html, passando o ID como parâmetro na URL
+    window.location.href = `detail.html?id=${pokemonId}`;
+}
